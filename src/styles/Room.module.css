@@ -1,0 +1,15 @@
+.progressBar {
+  width: 50%;
+  height: 20px;
+  border: black 2px solid;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.progressBarValue {
+  height: 20px;
+  border-radius: 20px;
+  margin-left: -1px;
+}
