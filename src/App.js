@@ -45,7 +45,7 @@ const App = () => {
 
     let refreshInterval = setInterval(() => {
       setDate(getDate());
-    }, 30000);
+    }, 10000);
 
     let timerInterval = setInterval(() => {
       setDisplayDate(getDate());
@@ -72,7 +72,7 @@ const App = () => {
           <link rel="icon" href="./assets/icon.ico" />
         </head>
 
-        <h1 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '2vw'}}>{"EpiRooms - " + moment(displayDate).format('DD MMMM YYYY - HH:mm:ss')}</h1>
+        <h1 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '2vw'}}>{"EpiRooms (Bêta) - " + moment(displayDate).format('DD MMMM YYYY - HH:mm:ss')}</h1>
 
         <main className={styles.container} style={{alignItems: "center", justifyContent: "center"}}>
 
@@ -88,7 +88,7 @@ const App = () => {
                             return (
                                 <div key={'' + i + ',' + j} style={{width: width, height: '100%', justifyContent: "center", display: "flex", flexDirection: "column"}}>
                                   <Caption color={STATES['free']} text={'Libre'} />
-                                  <Caption color={STATES['soonTaken']} text={'Bientôt occupé'} />
+                                  <Caption color={STATES['soonTaken']} text={'Bientôt occupé (< 2h)'} />
                                   <Caption color={STATES['taken']} text={'Occupé'} />
                                 </div>
                             )

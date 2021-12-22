@@ -1,15 +1,15 @@
 .progressBar {
   width: 50%;
   height: 15%;
-  border: black 2px solid;
-  border-radius: 20px;
+  border: black 4px solid;
+  border-radius: 2000px;
   overflow: hidden;
   display: flex;
   align-items: center;
 }
 
 .progressBarValue {
-  height: 15%;
-  border-radius: 20px;
+  height: 100%;
+  border-radius: 2000px;
   margin-left: -1px;
 }
