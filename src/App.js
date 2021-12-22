@@ -72,7 +72,7 @@ const App = () => {
           <link rel="icon" href="./assets/icon.ico" />
         </head>
 
-        <h1 suppressHydrationWarning style={{textAlign: 'center', color: 'white'}}>{"EpiRooms - " + moment(displayDate).format('DD MMMM YYYY - HH:mm:ss')}</h1>
+        <h1 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '2vw'}}>{"EpiRooms - " + moment(displayDate).format('DD MMMM YYYY - HH:mm:ss')}</h1>
 
         <main className={styles.container} style={{alignItems: "center", justifyContent: "center"}}>
 
@@ -96,7 +96,7 @@ const App = () => {
 
                           let room = ROOMS.get('' + j + ',' + i);
                           let a = activities && room ? activities[room][0] : undefined;
-                          return <Room key={"room" + j + ',' + i} fakeRoom={room === undefined} state={getState(date, a?.start)} activity={a} roomName={room} date={date} style={{width: width, height: room === 'Knuth' ? '205%' : '100%'}} />;
+                          return <Room key={"room" + j + ',' + i} fakeRoom={room === undefined} state={getState(date, a?.start)} activity={a} roomName={room} date={date} style={{width: width, height: room === 'Knuth' ? '204%' : '100%'}} />;
                         })
                       }
                     </div>

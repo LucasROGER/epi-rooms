@@ -1,6 +1,6 @@
 .progressBar {
   width: 50%;
-  height: 20px;
+  height: 15%;
   border: black 2px solid;
   border-radius: 20px;
   overflow: hidden;
@@ -9,7 +9,7 @@
 }
 
 .progressBarValue {
-  height: 20px;
+  height: 15%;
   border-radius: 20px;
   margin-left: -1px;
 }

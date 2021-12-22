@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import moment from "moment";
-import styles from '../styles/Room.module.css'
+import styles from '../styles/Room.module.css';
 
 export const STATES = {
   free: '#1faf1f',
@@ -26,12 +26,12 @@ const Room = ({style, roomName, activity, date, state, fakeRoom = false}) => {
   return (
     <div style={{...style, overflow: "hidden", fontWeight: "bold", borderRadius: 10, display: "flex", textAlign: "center", flexDirection: "column", justifyContent: "center", alignItems: "center", ...(fakeRoom ? {} : {backgroundColor: STATES[state]})}}>
       {!fakeRoom && <div style={{width: '100%'}}>
-        <h1 style={{...cStyles.textMargin, fontSize: 40}}>{roomName}</h1>
+        <h1 style={{...cStyles.textMargin, fontSize: '3vw'}}>{roomName}</h1>
         {activity ?
-            <div style={{width: '100%', fontSize: 20}}>
+            <div style={{width: '100%', fontSize: '1vw'}}>
               <p style={{...cStyles.textMargin}}>{activity.codemodule}</p>
               <p style={{...cStyles.textMargin, whiteSpace: "nowrap"}}>{activity.title}</p>
-              <div style={{display: 'flex', width: '100%', alignItems: "center", justifyContent: "space-around", fontWeight: "bold", fontSize: 20}}>
+              <div style={{display: 'flex', width: '100%', alignItems: "center", justifyContent: "space-around", fontWeight: "bold"}}>
                 <p style={{...cStyles.textMargin}}>{moment(activity.start).format('LT')}</p>
                 <div className={styles.progressBar} style={{borderColor: 'black'}}>
                   <div className={styles.progressBarValue}
@@ -41,7 +41,7 @@ const Room = ({style, roomName, activity, date, state, fakeRoom = false}) => {
               </div>
             </div>
             :
-            <div>
+            <div style={{fontSize: '1vw'}}>
               Libre toute la journée
             </div>
         }
