@@ -39,7 +39,7 @@ const getLocation = (activity) => {
 
 const getTitle = (activity) => {
   if (activity.calendar_type === "asso") {
-    return 'Reservation Pédago/EpiClub';
+    return 'Réservation Pédago/EpiClub';
   } else {
     return activity.acti_title ?? 'Untitled'
   }

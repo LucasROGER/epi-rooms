@@ -72,7 +72,8 @@ const App = () => {
           <link rel="icon" href="./assets/icon.ico" />
         </head>
 
-        <h1 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '2vw'}}>{"EpiRooms (Bêta) - " + moment(displayDate).format('DD MMMM YYYY - HH:mm:ss')}</h1>
+        <h1 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '2vw', margin: '0'}}>{"EpiRooms (Bêta) - " + moment(displayDate).format('DD MMMM YYYY - HH:mm:ss')}</h1>
+        <h2 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '1.75vw', margin: '0', marginBottom: 10}}>(Contact: lucas1.roger@epitech.eu) (Disponible sur: <span style={{textDecoration: "underline", color: 'yellow'}}>lroger.alwaysdata.net</span>)</h2>
 
         <main className={styles.container} style={{alignItems: "center", justifyContent: "center"}}>
 
