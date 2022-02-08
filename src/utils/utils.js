@@ -5,28 +5,101 @@ export const SCHOOL_SIZE = {
   height: 4,
 }
 
-export const ROOMS = new Map([
-  // 'Alcove-Carre',
-  // 'Annexe-Hopper',
-  // 'Annexe-Quaynor',
-  // 'Annexe-Recoque',
-  // 'Aqua',
-  // 'Aqua-Rium',
-  ['2,1', 'Babbage'],
-  ['1,1', 'Byron'],
-  ['0,2', 'Cray'],
-  ['1,0', 'Hamilton'],
-  // 'ISEG-Lille',
-  ['1,2', 'Knuth'],
-  ['2,2', 'Pascal'],
-  // 'Rium',
-  // 'Salle-sur-demande',
-  ['0,3', 'Tesla'],
-  ['2,3', 'Turing'],
-  // 'Unknown',
-  // 'exterieur',
-  // 'tout-le-batiment'
-]);
+export const STATES = {
+  free: '#1faf1f',
+  soonTaken: '#dfdf1f',
+  taken: '#df1f1f',
+};
+
+export const ROOMS = [
+  {
+    displayName: 'Babbage',
+    intraName: 'Babbage',
+    roomId: 'Babbage',
+    mapName: 'Babbage',
+  },
+  {
+    displayName: 'Byron',
+    intraName: 'Byron',
+    roomId: 'Byron',
+    mapName: 'Byron',
+  },
+  {
+    displayName: 'Cray',
+    intraName: 'Cray',
+    roomId: 'Cray',
+    mapName: 'Cray',
+  },
+  {
+    displayName: 'Hamilton',
+    intraName: 'Hamilton',
+    roomId: 'Hamilton',
+    mapName: 'Hamilton',
+  },
+  {
+    displayName: 'Knuth',
+    intraName: 'Knuth',
+    roomId: 'Knuth',
+    mapName: 'Knuth',
+  },
+  {
+    displayName: 'Pascal',
+    intraName: 'Pascal',
+    roomId: 'Pascal',
+    mapName: 'Pascal',
+  },
+  {
+    displayName: 'Tesla/HUB',
+    intraName: 'Tesla',
+    roomId: 'Tesla',
+  },
+  {
+    displayName: 'Turing',
+    intraName: 'Turing',
+    roomId: 'Turing',
+    mapName: 'Turing',
+  },
+  {
+    displayName: 'Salle sur demande',
+    intraName: 'Salle-sur-demande',
+    roomId: 'SsD',
+    mapName: 'SsD',
+  },
+  {
+    displayName: 'Alcove 1',
+    intraName: 'Alcove-Carre',
+    roomId: 'Alcove1',
+    mapName: '1',
+  },
+  {
+    displayName: 'Alcove 2',
+    intraName: 'Alcove-Carre',
+    roomId: 'Alcove2',
+    mapName: '2',
+  },
+];
+// export const ROOMS = new Map([
+//   // 'Alcove-Carre',
+//   // 'Annexe-Hopper',
+//   // 'Annexe-Quaynor',
+//   // 'Annexe-Recoque',
+//   // 'Aqua',
+//   // 'Aqua-Rium',
+//   ['Babbage', 'Babbage', ],
+//   ['Byron', 'Byron'],
+//   ['Cray', 'Cray'],
+//   ['Hamiton', 'Hamilton'],
+//   // 'ISEG-Lille',
+//   ['Knuth', 'Knuth'],
+//   ['Pascal', 'Pascal'],
+//   // 'Rium',
+//   // 'Salle-sur-demande',
+//   ['Tesla/HUB', 'Tesla'],
+//   ['2,3', 'Turing'],
+//   // 'Unknown',
+//   // 'exterieur',
+//   // 'tout-le-batiment'
+// ]);
 
 
 const getLocation = (activity) => {
@@ -69,7 +142,7 @@ export const fetchPlanning = (date) => {
   return fetch(`https://epiroom-max.alwaysdata.net/?date=${d}`)
     .then(async (r) => {
       let planning = await r.json();
-      console.log(planning)
+      // console.log(planning)
       return planning;
     })
     .catch((e) => {
@@ -82,7 +155,7 @@ export const getDate = () => {
       /*
       '2021-10-18 07:20:00'
       //*/
-  )//.add(40, 'minutes')
+  )//.add(8, 'hours')
     .valueOf();
 };
 
@@ -93,7 +166,7 @@ export const formatActivities = (activities, date) => {
   let acts = {};
   for (let i = 0; i < newList.length; i++) {
     let room = getLocation(newList[i]);
-    if (!Array.from(ROOMS.values()).includes(room)) continue;
+    if (!Array.from(ROOMS.values(), (item) => item.intraName).includes(room)) continue;
     if (!acts[room]) {
       acts[room] = [];
     }
@@ -103,7 +176,7 @@ export const formatActivities = (activities, date) => {
 
   let ordered = {};
 
-  Array.from(ROOMS.values()).forEach((item) => {
+  Array.from(ROOMS.values(), (item) => item.intraName).forEach((item) => {
     ordered[item] = !acts[item] ? [] : acts[item].sort((a, b) => {
       return a.start - b.start;
     }).filter((i) => {
@@ -111,7 +184,7 @@ export const formatActivities = (activities, date) => {
     });
   });
 
-  console.log(ordered);
+  // console.log(ordered);
 
   return ordered;
 }

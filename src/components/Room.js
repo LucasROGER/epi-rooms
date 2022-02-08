@@ -24,9 +24,9 @@ const Room = ({style, roomName, activity, date, state, fakeRoom = false}) => {
   }
 
   return (
-    <div style={{...style, overflow: "hidden", fontWeight: "bold", borderRadius: 10, display: "flex", textAlign: "center", flexDirection: "column", justifyContent: "center", alignItems: "center", ...(fakeRoom ? {} : {backgroundColor: STATES[state]})}}>
+    <div style={{...style, overflow: "hidden", fontWeight: "bold", padding: '1%', borderRadius: 10, display: "flex", flex: 1, margin: "1%", textAlign: "center", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: STATES[state]}} >
       {!fakeRoom && <div style={{width: '100%'}}>
-        <h1 style={{...cStyles.textMargin, fontSize: '3vw'}}>{roomName}</h1>
+        <h1 style={{...cStyles.textMargin, fontSize: '2vw'}}>{roomName}</h1>
         {activity ?
             <div style={{width: '100%', fontSize: '1vw'}}>
               <p style={{...cStyles.textMargin}}>{activity.codemodule}</p>
