@@ -31,6 +31,10 @@
   top: 1.3vw
 }
 
+.qrcode {
+  display: flex;
+}
+
 @media print, screen and (max-width: 600px) {
   .plan {
     width: 100vw;

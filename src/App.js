@@ -248,7 +248,7 @@ const App = () => {
           {/*  }*/}
           {/*</div>*/}
 
-          <div className={styles.qrcode} style={{position: "absolute", left: 0, bottom: 0, display: "flex", flexDirection: "row", alignItems: "flex-end"}}>
+          <div className={styles.qrcode} style={{position: "absolute", left: 0, bottom: 0, flexDirection: "row", alignItems: "flex-end"}}>
             <QRCode value={"lroger.alwaysdata.net"} size={128}/>
             <p style={{color: "white", fontSize: 10}}>(eh, viens sur mobile, c'est mieux !)</p>
           </div>
