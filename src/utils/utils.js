@@ -37,12 +37,6 @@ export const ROOMS = [
     mapName: 'Hamilton',
   },
   {
-    displayName: 'Knuth',
-    intraName: 'Knuth',
-    roomId: 'Knuth',
-    mapName: 'Knuth',
-  },
-  {
     displayName: 'Pascal',
     intraName: 'Pascal',
     roomId: 'Pascal',
@@ -72,10 +66,16 @@ export const ROOMS = [
     mapName: '1',
   },
   {
-    displayName: 'Alcove 2',
+    displayName: undefined,
     intraName: 'Alcove-Carre',
     roomId: 'Alcove2',
     mapName: '2',
+  },
+  {
+    displayName: 'Knuth',
+    intraName: 'Knuth',
+    roomId: 'Knuth',
+    mapName: 'Knuth',
   },
 ];
 // export const ROOMS = new Map([

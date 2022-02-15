@@ -14,6 +14,9 @@ import $ from 'jquery';
 import Room from "./components/Room";
 import QRCode from "react-qr-code";
 
+
+const LAYOUT_COLUMNS = 3;
+
 const App = () => {
   const [activities, setActivities] = useState(undefined);
   const [rawActivities, setRawActivities] = useState(undefined);
@@ -56,7 +59,7 @@ const App = () => {
       let scrollList = $("#scrollList");
       scrollPos = scrollPos === 0 ? scrollList.height() : 0;
       scrollList.scrollTop(scrollPos);
-    }, 4000);
+    }, 5000);
 
     return () => {
       clearInterval(planningInterval);
@@ -83,6 +86,17 @@ const App = () => {
       }
     }
   }, [date, rawActivities]);
+
+  const drawLayout = (i) => {
+    let elements = [];
+
+    for (let j = 0; j < LAYOUT_COLUMNS; j++) {
+      if (!ROOMS[i + j] || !ROOMS[i + j].displayName) continue;
+      elements.push(<Room roomName={ROOMS[i + j]?.displayName} date={displayDate} activity={activities[ROOMS[i + j].intraName][0] ?? undefined} state={getState(date, activities[ROOMS[i + j].intraName][0]?.start)} style={{minHeight: $('#scrollList').height() / 5}}/>)
+    }
+
+    return elements;
+  };
 
   return (
       <div className={styles.container} style={{backgroundColor: '#1f1f1f'}}>
@@ -194,11 +208,10 @@ const App = () => {
             <h1 className={styles.time} suppressHydrationWarning style={{textAlign: 'center', color: 'white', margin: '0', position: "absolute", left: 0}}>{moment(displayDate).format('HH:mm:ss')}</h1>
             {/*<h2 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '1.75vw', margin: '0', marginBottom: 10}}>(Contact: lucas1.roger@epitech.eu) (Disponible sur: <span style={{textDecoration: "underline", color: 'yellow'}}>lroger.alwaysdata.net</span>)</h2>*/}
 
-            <div id={"scrollList"} style={{flex: 1, flexDirection: "row", overflowY: "scroll", maxHeight: '100vh', scrollBehavior: "smooth"}}>
+            <div id={"scrollList"} style={{flex: 1, flexDirection: "row", maxHeight: '100vh', scrollBehavior: "smooth"}}>
               {
-
-                Array.from(ROOMS).map((item, i) =>   {
-                  if (i % 2 === 1) {
+                Array.from(ROOMS.filter((i) => i.displayName)).map((item, i) =>   {
+                  if (i % LAYOUT_COLUMNS !== 0) {
                     return <></>;
                   } else {
 
@@ -206,10 +219,9 @@ const App = () => {
 
                     return (
                       <div key={ROOMS[i].roomId + "_" + i} style={{display: "flex", flexDirection: "row"}}>
-                        <Room roomName={ROOMS[i]?.displayName} date={displayDate} activity={activities[ROOMS[i].intraName][0] ?? undefined} state={getState(date, activities[ROOMS[i].intraName][0]?.start)} style={{height: $('#scrollList').height() / 5}}/>
-                        {i + 1 < ROOMS.length && <Room key={ROOMS[i + 1].roomId + "_" + (i + 1)} roomName={ROOMS[i + 1]?.displayName}
-                               date={displayDate} activity={activities[ROOMS[i + 1].intraName][0] ?? undefined} state={getState(date, activities[ROOMS[i + 1].intraName][0]?.start)} style={{height: $('#scrollList').height() / 5}}/>}
-                        <div id={"scroll_" + i} />
+                        {
+                          drawLayout(i)
+                        }
                       </div>
                     );
                   }
@@ -248,8 +260,8 @@ const App = () => {
           {/*  }*/}
           {/*</div>*/}
 
-          <div className={styles.qrcode} style={{position: "absolute", left: 0, bottom: 0, flexDirection: "row", alignItems: "flex-end"}}>
-            <QRCode value={"lroger.alwaysdata.net"} size={128}/>
+          <div className={styles.qrcode} style={{position: "absolute", left: 3, bottom: 3, flexDirection: "row", alignItems: "flex-end"}}>
+            <QRCode style={{border: "solid 2px white"}} value={"lroger.alwaysdata.net"} size={128}/>
             <p style={{color: "white", fontSize: 10}}>(eh, viens sur mobile, c'est mieux !)</p>
           </div>
         </main>
