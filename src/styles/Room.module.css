@@ -13,3 +13,25 @@
   border-radius: 2000px;
   margin-left: -1px;
 }
+
+.roomName {
+  font-size: 2vw;
+}
+
+.commonText {
+  font-size: 1vw;
+}
+
+@media print, screen and (max-width: 600px) {
+  .roomName {
+    font-size: 16px;
+  }
+
+  .commonText {
+    font-size: 8px;
+  }
+
+  .progressBar {
+    border: black 1px solid;
+  }
+}

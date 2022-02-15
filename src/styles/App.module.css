@@ -3,7 +3,8 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
-  overflow: hidden;
+  flex-wrap: wrap;
+  /*overflow: hidden;*/
 }
 
 .column {
@@ -14,4 +15,43 @@
 
 .freeRoom {
   border: #1fff1f;
+}
+
+.plan {
+  width: 40vw;
+  height: 100vh;
+}
+
+.date {
+  font-size: 1.3vw;
+}
+
+.time {
+  font-size: 2vw;
+  top: 1.3vw
+}
+
+@media print, screen and (max-width: 600px) {
+  .plan {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .qrcode {
+    display: none;
+  }
+
+  .date {
+    font-size: 20px;
+  }
+
+  .time {
+    font-size: 28px;
+    top: 20px;
+  }
+}
+
+body {
+  background-color: #1f1f1f;
+  overflow-x: hidden;
 }

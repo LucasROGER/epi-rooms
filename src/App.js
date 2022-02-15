@@ -52,9 +52,10 @@ const App = () => {
 
     let scrollPos = 0;
     let scrollInterval = setInterval(() => {
-      $("#scrollList").scrollTop(scrollPos);
-      scrollPos += $("#scrollList").height() / 5;
-      scrollPos %= $("#scrollList").height();
+      if (window.innerWidth <= 600) return;
+      let scrollList = $("#scrollList");
+      scrollPos = scrollPos === 0 ? scrollList.height() : 0;
+      scrollList.scrollTop(scrollPos);
     }, 4000);
 
     return () => {
@@ -93,7 +94,7 @@ const App = () => {
 
         <main className={styles.container} >
 
-          <div style={{width: '40vw', height: '100vh'}}>
+          <div className={styles.plan} >
 
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox={"0 0 100 123"}>
 
@@ -189,13 +190,14 @@ const App = () => {
 
           <div style={{flex: 1, display: "flex", flexDirection: "column"}}>
 
-            <h1 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '2vw', margin: '0'}}>{"EpiRooms (Bêta) - " + moment(displayDate).format('DD MMMM YYYY - HH:mm:ss')}</h1>
-            <h2 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '1.75vw', margin: '0', marginBottom: 10}}>(Contact: lucas1.roger@epitech.eu) (Disponible sur: <span style={{textDecoration: "underline", color: 'yellow'}}>lroger.alwaysdata.net</span>)</h2>
+            <h1 className={styles.date} suppressHydrationWarning style={{textAlign: 'center', color: 'white', margin: '0', position: "absolute", top: 0, left: 0}}>{moment(displayDate).format('DD MMMM YYYY')}</h1>
+            <h1 className={styles.time} suppressHydrationWarning style={{textAlign: 'center', color: 'white', margin: '0', position: "absolute", left: 0}}>{moment(displayDate).format('HH:mm:ss')}</h1>
+            {/*<h2 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '1.75vw', margin: '0', marginBottom: 10}}>(Contact: lucas1.roger@epitech.eu) (Disponible sur: <span style={{textDecoration: "underline", color: 'yellow'}}>lroger.alwaysdata.net</span>)</h2>*/}
 
             <div id={"scrollList"} style={{flex: 1, flexDirection: "row", overflowY: "scroll", maxHeight: '100vh', scrollBehavior: "smooth"}}>
               {
 
-                Array.from(ROOMS).map((item, i) => {
+                Array.from(ROOMS).map((item, i) =>   {
                   if (i % 2 === 1) {
                     return <></>;
                   } else {
@@ -246,8 +248,9 @@ const App = () => {
           {/*  }*/}
           {/*</div>*/}
 
-          <div style={{position: "absolute", left: 0, bottom: 0}}>
-          <QRCode value={"lroger.alwaysdata.net"} size={128}/>
+          <div className={styles.qrcode} style={{position: "absolute", left: 0, bottom: 0, display: "flex", flexDirection: "row", alignItems: "flex-end"}}>
+            <QRCode value={"lroger.alwaysdata.net"} size={128}/>
+            <p style={{color: "white", fontSize: 10}}>(eh, viens sur mobile, c'est mieux !)</p>
           </div>
         </main>
       </div>

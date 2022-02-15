@@ -26,9 +26,9 @@ const Room = ({style, roomName, activity, date, state, fakeRoom = false}) => {
   return (
     <div style={{...style, overflow: "hidden", fontWeight: "bold", padding: '1%', borderRadius: 10, display: "flex", flex: 1, margin: "1%", textAlign: "center", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: STATES[state]}} >
       {!fakeRoom && <div style={{width: '100%'}}>
-        <h1 style={{...cStyles.textMargin, fontSize: '2vw'}}>{roomName}</h1>
+        <h1 className={styles.roomName} style={{...cStyles.textMargin}}>{roomName}</h1>
         {activity ?
-            <div style={{width: '100%', fontSize: '1vw'}}>
+            <div className={styles.commonText} style={{width: '100%'}}>
               <p style={{...cStyles.textMargin}}>{activity.codemodule}</p>
               <p style={{...cStyles.textMargin, whiteSpace: "nowrap"}}>{activity.title}</p>
               <div style={{display: 'flex', width: '100%', alignItems: "center", justifyContent: "space-around", fontWeight: "bold"}}>
@@ -41,7 +41,7 @@ const Room = ({style, roomName, activity, date, state, fakeRoom = false}) => {
               </div>
             </div>
             :
-            <div style={{fontSize: '1vw'}}>
+            <div className={styles.commonText} >
               Libre toute la journée
             </div>
         }
