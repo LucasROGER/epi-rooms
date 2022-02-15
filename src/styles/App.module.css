@@ -3,8 +3,8 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  /*overflow: hidden;*/
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .column {
@@ -52,6 +52,10 @@
   .time {
     font-size: 28px;
     top: 20px;
+  }
+
+  .container {
+    flex-wrap: wrap;
   }
 }
 
