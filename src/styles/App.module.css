@@ -56,6 +56,7 @@
 
   .container {
     flex-wrap: wrap;
+    overflow: scroll;
   }
 }
 
