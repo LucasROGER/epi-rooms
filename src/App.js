@@ -206,7 +206,6 @@ const App = () => {
 
             <h1 className={styles.date} suppressHydrationWarning style={{textAlign: 'center', color: 'white', margin: '0', position: "absolute", top: 0, left: 0}}>{moment(displayDate).format('DD MMMM YYYY')}</h1>
             <h1 className={styles.time} suppressHydrationWarning style={{textAlign: 'center', color: 'white', margin: '0', position: "absolute", left: 0}}>{moment(displayDate).format('HH:mm:ss')}</h1>
-            {/*<h2 suppressHydrationWarning style={{textAlign: 'center', color: 'white', fontSize: '1.75vw', margin: '0', marginBottom: 10}}>(Contact: lucas1.roger@epitech.eu) (Disponible sur: <span style={{textDecoration: "underline", color: 'yellow'}}>lroger.alwaysdata.net</span>)</h2>*/}
 
             <div id={"scrollList"} style={{flex: 1, flexDirection: "row", maxHeight: '100vh', scrollBehavior: "smooth"}}>
               {
@@ -229,36 +228,6 @@ const App = () => {
               }
             </div>
           </div>
-
-          {/*<div style={{width: '100%', height: '90%'}}>*/}
-          {/*  {*/}
-          {/*    Array.from(Array(SCHOOL_SIZE.height)).map((e, i) => {*/}
-          {/*      let width = (100 / SCHOOL_SIZE.width - 1) + '%';*/}
-          {/*      return (*/}
-          {/*          <div key={'row' + i} style={{display: "flex", justifyContent: "space-around", height: (100 / SCHOOL_SIZE.height - 1) + '%', marginBottom: 10}}>*/}
-          {/*            {*/}
-          {/*              Array.from(
-          Array(SCHOOL_SIZE.width)).map((f, j) => {*/}
-          {/*                if (j === 0 && i === 0) {*/}
-          {/*                  return (*/}
-          {/*                      <div key={'' + i + ',' + j} style={{width: width, height: '100%', justifyContent: "center", display: "flex", flexDirection: "column"}}>*/}
-          {/*                        <Caption color={STATES['free']} text={'Libre'} />*/}
-          {/*                        <Caption color={STATES['soonTaken']} text={'Bientôt occupé (< 2h)'} />*/}
-          {/*                        <Caption color={STATES['taken']} text={'Occupé'} />*/}
-          {/*                      </div>*/}
-          {/*                  )*/}
-          {/*                }*/}
-
-          {/*                let room = ROOMS.get('' + j + ',' + i);*/}
-          {/*                let a = activities && room ? activities[room][0] : undefined;*/}
-          {/*                return <Room key={"room" + j + ',' + i} fakeRoom={room === undefined} state={getState(date, a?.start)} activity={a} roomName={room} date={date} style={{width: width, height: room === 'Knuth' ? '204%' : '100%'}} />;*/}
-          {/*              })*/}
-          {/*            }*/}
-          {/*          </div>*/}
-          {/*      )*/}
-          {/*    })*/}
-          {/*  }*/}
-          {/*</div>*/}
 
           <div className={styles.qrcode} style={{position: "absolute", left: 3, bottom: 3, flexDirection: "row", alignItems: "flex-end"}}>
             <QRCode style={{border: "solid 2px white"}} value={"lroger.alwaysdata.net"} size={128}/>

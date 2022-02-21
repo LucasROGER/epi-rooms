@@ -1,10 +1,5 @@
 import moment from "moment";
 
-export const SCHOOL_SIZE = {
-  width: 3,
-  height: 4,
-}
-
 export const STATES = {
   free: '#1faf1f',
   soonTaken: '#dfdf1f',
@@ -60,7 +55,7 @@ export const ROOMS = [
     mapName: 'SsD',
   },
   {
-    displayName: 'Alcove 1',
+    displayName: 'Alcoves',
     intraName: 'Alcove-Carre',
     roomId: 'Alcove1',
     mapName: '1',
@@ -104,8 +99,10 @@ export const ROOMS = [
 
 const getLocation = (activity) => {
   if (activity.location) {
+    console.log("a: " + activity?.location)
     return activity?.location?.split('/')?.pop() ?? 'Unknown';
   } else {
+    console.log("b: " + activity?.room?.code)
     return activity?.room?.code?.split('/')?.pop() ?? 'Unknown';
   }
 }
@@ -142,7 +139,7 @@ export const fetchPlanning = (date) => {
   return fetch(`https://epiroom-max.alwaysdata.net/?date=${d}`)
     .then(async (r) => {
       let planning = await r.json();
-      // console.log(planning)
+      console.log(planning)
       return planning;
     })
     .catch((e) => {
@@ -166,6 +163,7 @@ export const formatActivities = (activities, date) => {
   let acts = {};
   for (let i = 0; i < newList.length; i++) {
     let room = getLocation(newList[i]);
+    console.log("room: " + room);
     if (!Array.from(ROOMS.values(), (item) => item.intraName).includes(room)) continue;
     if (!acts[room]) {
       acts[room] = [];
