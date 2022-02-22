@@ -8,18 +8,6 @@ export const STATES = {
 
 export const ROOMS = [
   {
-    displayName: 'Babbage',
-    intraName: 'Babbage',
-    roomId: 'Babbage',
-    mapName: 'Babbage',
-  },
-  {
-    displayName: 'Byron',
-    intraName: 'Byron',
-    roomId: 'Byron',
-    mapName: 'Byron',
-  },
-  {
     displayName: 'Cray',
     intraName: 'Cray',
     roomId: 'Cray',
@@ -32,10 +20,10 @@ export const ROOMS = [
     mapName: 'Hamilton',
   },
   {
-    displayName: 'Pascal',
-    intraName: 'Pascal',
-    roomId: 'Pascal',
-    mapName: 'Pascal',
+    displayName: 'Babbage',
+    intraName: 'Babbage',
+    roomId: 'Babbage',
+    mapName: 'Babbage',
   },
   {
     displayName: 'Tesla/HUB',
@@ -43,10 +31,16 @@ export const ROOMS = [
     roomId: 'Tesla',
   },
   {
-    displayName: 'Turing',
-    intraName: 'Turing',
-    roomId: 'Turing',
-    mapName: 'Turing',
+    displayName: 'Alcoves',
+    intraName: 'Alcove-Carre',
+    roomId: 'Alcove1',
+    mapName: '1',
+  },
+  {
+    displayName: 'Pascal',
+    intraName: 'Pascal',
+    roomId: 'Pascal',
+    mapName: 'Pascal',
   },
   {
     displayName: 'Salle sur demande',
@@ -55,10 +49,16 @@ export const ROOMS = [
     mapName: 'SsD',
   },
   {
-    displayName: 'Alcoves',
-    intraName: 'Alcove-Carre',
-    roomId: 'Alcove1',
-    mapName: '1',
+    displayName: 'Byron',
+    intraName: 'Byron',
+    roomId: 'Byron',
+    mapName: 'Byron',
+  },
+  {
+    displayName: 'Turing',
+    intraName: 'Turing',
+    roomId: 'Turing',
+    mapName: 'Turing',
   },
   {
     displayName: undefined,
