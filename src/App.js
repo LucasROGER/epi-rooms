@@ -92,7 +92,7 @@ const App = () => {
 
     for (let j = 0; j < LAYOUT_COLUMNS; j++) {
       if (!ROOMS[i + j] || !ROOMS[i + j].displayName) continue;
-      elements.push(<Room roomName={ROOMS[i + j]?.displayName} date={displayDate} activity={activities[ROOMS[i + j].intraName][0] ?? undefined} state={getState(date, activities[ROOMS[i + j].intraName][0]?.start)} style={{minHeight: $('#scrollList').height() / 5}}/>)
+      elements.push(<Room key={i + "," + j} roomName={ROOMS[i + j]?.displayName} date={displayDate} activity={activities[ROOMS[i + j].intraName][0] ?? undefined} state={getState(date, activities[ROOMS[i + j].intraName][0]?.start)} style={{minHeight: $('#scrollList').height() / 5}}/>)
     }
 
     return elements;
@@ -108,7 +108,7 @@ const App = () => {
 
         <main className={styles.container} >
 
-          <div className={styles.plan} >
+          <div className={styles.plan}>
 
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox={"0 0 100 123"}>
 
@@ -201,8 +201,7 @@ const App = () => {
 
           </div>
 
-
-          <div style={{flex: 1, display: "flex", flexDirection: "column"}}>
+          <div className={styles.rooms}>
 
             <h1 className={styles.date} suppressHydrationWarning style={{textAlign: 'center', color: 'white', margin: '0', position: "absolute", top: 0, left: 0}}>{moment(displayDate).format('DD MMMM YYYY')}</h1>
             <h1 className={styles.time} suppressHydrationWarning style={{textAlign: 'center', color: 'white', margin: '0', position: "absolute", left: 0}}>{moment(displayDate).format('HH:mm:ss')}</h1>
